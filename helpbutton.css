@@ -1,0 +1,62 @@
+.reveal .controls.helpbutton-container{
+    display: block;
+    left: 12px;
+    right: auto;
+}
+
+.reveal .controls button.helpbutton{
+    bottom: 3.2em;
+}
+
+.reveal .controls button.helpbutton > div{
+    border: .5em solid;
+    border-radius: 1.8em;
+    box-sizing: border-box;
+    height: 3.6em;
+    position: relative;
+    transition: all 0.15s ease, background-color 0.8s ease;
+    width: 3.6em;
+}
+
+.reveal .controls button.helpbutton > div:before{
+    content: '?';
+    font-size: 2em;
+    font-weight: 900;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate( -50%, -50% );
+    transform: translate( -50%, -50% );
+    transition: all 0.15s ease, background-color 0.8s ease;
+}
+
+.reveal .controls button.helpbutton > div:hover {
+    -webkit-transform: scale( 1.1, 1.1 );
+    transform: scale( 1.1, 1.1 );
+}
+
+.reveal .controls button.helpbutton > div:active {
+    -webkit-animation: helpbutton-rotate-center 0.5s linear infinite both;
+    animation: helpbutton-rotate-center 0.5s linear infinite both;
+}
+
+@-webkit-keyframes helpbutton-rotate-center {
+    0% {
+        -webkit-transform: rotate(0) scale( 1.1, 1.1 );
+        transform: rotate(0) scale( 1.1, 1.1 );
+    }
+    100% {
+        -webkit-transform: rotate(-360deg) scale( 1.1, 1.1 );
+        transform: rotate(-360deg) scale( 1.1, 1.1 );
+    }
+}
+@keyframes helpbutton-rotate-center {
+    0% {
+        -webkit-transform: rotate(0) scale( 1.1, 1.1 );
+        transform: rotate(0) scale( 1.1, 1.1 );
+    }
+    100% {
+        -webkit-transform: rotate(-360deg) scale( 1.1, 1.1 );
+        transform: rotate(-360deg) scale( 1.1, 1.1 );
+    }
+}
