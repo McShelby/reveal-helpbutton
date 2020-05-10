@@ -4,9 +4,9 @@ A [reveal.js](https://github.com/hakimel/reveal.js/) plugin to open the help scr
 
 <img style="border: 1px solid gray;" src="screenshot-button.png" width="55%">
 
-This is handy if you upload your presentation and someone with no knowledge of reveal.js' keyboard shortcuts wants to view it. The plugin can be configured when to show the button.
+This is handy if someone with no knowledge of reveal.js' keyboard shortcuts wants to view your presentation. The plugin can be configured when to show the button.
 
-Works with all official themes. No further dependencies. No bloated installation.
+Works with all official themes.
 
 ## Installation
 
@@ -26,10 +26,16 @@ Reveal.initialize({
 
 ## Usage
 
-You can configure the button for your presentation by providing the ```helpButtonDisplay``` option in the reveal.js initialization options. The config value is optional and will default as specified below.
+After installation the plugin works right out of the box.
+
+### Configuration
+
+You can configure some aspects of the plugin by adding the following options to your reveal configuration. Note that all configuration values are optional and will default to the values specified below.
 
 ```javascript
 Reveal.initialize({
+	// ...
+
 	// Displays a help button in the lower left corner.
 	// When pressed it shows the built-in reveal.js help screen.
 	// Possible values:
@@ -50,6 +56,7 @@ The plugin API is accessible from the global ```HelpButton``` object.
 ```javascript
 // Change a config value at runtime
 HelpButton.configure({
+	// Takes the same options as for configuration
 	helpButtonDisplay: 'none',
 });
 ```
@@ -58,4 +65,4 @@ HelpButton.configure({
 
 [MIT licensed](https://en.wikipedia.org/wiki/MIT_License).
 
-Copyright (C) 2018 [Sören Weber](https://soeren-weber.de)
+Copyright (C) 2020 [Sören Weber](https://soeren-weber.de)
