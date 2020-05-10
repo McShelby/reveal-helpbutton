@@ -13,7 +13,7 @@ var HelpButton = ( function( Reveal ){
 		// Plugins may be stored outside of the reveal installation
 		// therefore we have to find out the proper path first
 		var config = Reveal.getConfig();
-		var regex = /\/helpbutton.js$/i;
+		var regex = /\bhelpbutton.js$/i;
 		var help_config = config.dependencies.find( function( e ){
 			return e.src && e.src.search( regex ) >= 0;
 		});
@@ -22,7 +22,7 @@ var HelpButton = ( function( Reveal ){
 			return;
 		}
 		var path = help_config.src.replace( regex, '' );
-		addStylesheet( path + '/helpbutton.css' );
+		addStylesheet( path + 'helpbutton.css' );
 	}
 
 	function installHelpButtonDom( event ){
