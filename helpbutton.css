@@ -18,6 +18,17 @@
     height: 3.6em;
     position: relative;
     width: 3.6em;
+    -webkit-animation: helpbutton-fadein 0.5s linear forwards;
+    animation: helpbutton-fadein 0.5s linear forwards;
+}
+
+@-webkit-keyframes helpbutton-fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+@-webkit-keyframes helpbutton-fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
 
 .reveal .controls.helpbutton .controls-help:before{
