@@ -1,24 +1,26 @@
-.reveal .controls.helpbutton-container{
+.reveal .controls.helpbutton{
+    /* don't use reveals controls=false mechanism
+    to hide our button, but control it by our own
+    configuration */
     display: block;
     left: 12px;
     right: auto;
 }
 
-.reveal .controls button.helpbutton{
+.reveal .controls.helpbutton button{
     bottom: 3.2em;
 }
 
-.reveal .controls button.helpbutton > div{
+.reveal .controls.helpbutton .controls-help{
     border: .5em solid;
     border-radius: 1.8em;
     box-sizing: border-box;
     height: 3.6em;
     position: relative;
-    transition: all 0.15s ease, background-color 0.8s ease;
     width: 3.6em;
 }
 
-.reveal .controls button.helpbutton > div:before{
+.reveal .controls.helpbutton .controls-help:before{
     content: '?';
     font-size: 2em;
     font-weight: 900;
@@ -30,12 +32,12 @@
     transition: all 0.15s ease, background-color 0.8s ease;
 }
 
-.reveal .controls button.helpbutton > div:hover {
+.reveal .controls.helpbutton .controls-help:hover {
     -webkit-transform: scale( 1.1, 1.1 );
     transform: scale( 1.1, 1.1 );
 }
 
-.reveal .controls button.helpbutton > div:active {
+.reveal .controls.helpbutton .controls-help:active {
     -webkit-animation: helpbutton-rotate-center 0.5s linear infinite both;
     animation: helpbutton-rotate-center 0.5s linear infinite both;
 }

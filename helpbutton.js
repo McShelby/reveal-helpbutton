@@ -23,7 +23,7 @@ var HelpButton = ( function( Reveal ){
 		}
 		var path = help_config.src.replace( regex, '' );
 		addStylesheet( path + '/helpbutton.css' );
-}
+	}
 
 	function setHelpButtonConfig( helpButtonDisplay ){
 		var values = [ 'none', 'first', 'intro', 'always' ];
@@ -36,18 +36,18 @@ var HelpButton = ( function( Reveal ){
 		Reveal.configure({ helpButtonDisplay: helpButtonDisplay });
 	}
 
-	function setHelpButtonContainer( event ){
+	function installHelpButtonDom( event ){
 		// install help button in lower left position but initially
 		// hide it until all styles are set
 		var control = document.createElement( 'aside' );
-		control.classList.add( 'controls', 'helpbutton-container' );
-		control.innerHTML = '<button class="helpbutton" disabled="disabled" style="display: none;" onclick="Reveal.toggleHelp()"><div></div></button>';
+		control.classList.add( 'controls', 'helpbutton' );
+		control.innerHTML = '<button class="show-help" aria-label="show help" disabled="disabled" style="display: none;" onclick="Reveal.toggleHelp()"><div class="controls-help"></div></button>';
 		document.querySelector( '.reveal' ).appendChild( control );
 	}
 
 	function setHelpButton( event ){
 		// event.previousSlide, event.currentSlide, event.indexh, event.indexv
-		var help = document.querySelector( '.helpbutton' );
+		var help = document.querySelector( '.show-help' );
 		if( help ){
 			var config = Reveal.getConfig();
 			var display = 'none';
@@ -79,7 +79,7 @@ var HelpButton = ( function( Reveal ){
 	}
 
 	function installHelpButton(){
-		setHelpButtonContainer();
+		installHelpButtonDom();
 
 		// the slidechange event will not be triggered on
 		// initial page load, so we need to toggle the
