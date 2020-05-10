@@ -25,13 +25,15 @@ var HelpButton = ( function( Reveal ){
 		addStylesheet( path + '/helpbutton.css' );
 	}
 
-	function setHelpButtonConfig( helpButtonDisplay ){
+	function setHelpButtonConfig( o ){
 		var values = [ 'none', 'first', 'intro', 'always' ];
 		var config = Reveal.getConfig();
-		Reveal.configure({ helpButtonDisplay: config.helpButtonDisplay || defMode });
+		var helpButtonDisplay = o===Object(o) && o.helpButtonDisplay ? o.helpButtonDisplay
+			: config.helpButtonDisplay ? config.helpButtonDisplay
+			: defMode;
 		if( values.indexOf( helpButtonDisplay ) < 0 ){
-			console.error( 'Invalid value for configuration helpButtonDisplay. Allowed values are: ' + values.join( ', ') + '.' );
-			return;
+			console.error( 'Invalid value for configuration helpButtonDisplay. Allowed values are: ' + values.join( ', ') + '. Falling back to default ' + defMode + '.');
+			helpButtonDisplay = defMode;
 		}
 		Reveal.configure({ helpButtonDisplay: helpButtonDisplay });
 	}
@@ -89,15 +91,13 @@ var HelpButton = ( function( Reveal ){
 	}
 
 	function configure( o ){
-		if( o && o.helpButtonDisplay !== undefined ){
-			setHelpButtonConfig( o.helpButtonDisplay );
-			toggleHelpButton();
-		}
+		setHelpButtonConfig( o );
+		toggleHelpButton();
 	}
 
 	function install(){
 		installStylesheets();
-		setHelpButtonConfig( defMode );
+		setHelpButtonConfig();
 		// in case we are loading async the ready event may already
 		// been emitted, so test here for readiness here and install
 		// manually here
