@@ -25,6 +25,15 @@ var HelpButton = ( function( Reveal ){
 		addStylesheet( path + '/helpbutton.css' );
 	}
 
+	function installHelpButtonDom( event ){
+		// install help button in lower left position but initially
+		// hide it until all styles are set
+		var control = document.createElement( 'aside' );
+		control.classList.add( 'controls', 'helpbutton' );
+		control.innerHTML = '<button class="show-help" aria-label="show help" disabled="disabled" style="display: none;" onclick="Reveal.toggleHelp()"><div class="controls-help"></div></button>';
+		document.querySelector( '.reveal' ).appendChild( control );
+	}
+
 	function setHelpButtonConfig( o ){
 		var values = [ 'none', 'first', 'intro', 'always' ];
 		var config = Reveal.getConfig();
@@ -36,15 +45,6 @@ var HelpButton = ( function( Reveal ){
 			helpButtonDisplay = defMode;
 		}
 		Reveal.configure({ helpButtonDisplay: helpButtonDisplay });
-	}
-
-	function installHelpButtonDom( event ){
-		// install help button in lower left position but initially
-		// hide it until all styles are set
-		var control = document.createElement( 'aside' );
-		control.classList.add( 'controls', 'helpbutton' );
-		control.innerHTML = '<button class="show-help" aria-label="show help" disabled="disabled" style="display: none;" onclick="Reveal.toggleHelp()"><div class="controls-help"></div></button>';
-		document.querySelector( '.reveal' ).appendChild( control );
 	}
 
 	function setHelpButton( event ){
