@@ -15,11 +15,8 @@ var HelpButton = ( function( _Reveal ){
 		// therefore we have to find out the proper path first
 		var config = Reveal.getConfig();
 		var regex = /\bhelpbutton.js$/i;
-		var help_config = null;
-		document.querySelectorAll( 'script' ).forEach( function( e ){
-			if( e.src && e.src.search( regex ) >= 0 ){
-				help_config = e;
-			}
+		var help_config = Array.from( document.querySelectorAll( 'script' ) ).find( function( e ){
+			return e.attributes.src && e.attributes.src.value.search( regex ) >= 0;
 		});
 		if( !help_config ){
 			console.error( 'helpbutton.js not found in config dependencies. Did you rename this file?' );
