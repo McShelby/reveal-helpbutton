@@ -1,5 +1,6 @@
-var HelpButton = ( function( Reveal ){
+var HelpButton = ( function( _Reveal ){
 
+	var Reveal = _Reveal;
 	var defMode = 'first';
 
 	function addStylesheet( href ){
@@ -14,8 +15,11 @@ var HelpButton = ( function( Reveal ){
 		// therefore we have to find out the proper path first
 		var config = Reveal.getConfig();
 		var regex = /\bhelpbutton.js$/i;
-		var help_config = config.dependencies.find( function( e ){
-			return e.src && e.src.search( regex ) >= 0;
+		var help_config = null;
+		document.querySelectorAll( 'script' ).forEach( function( e ){
+			if( e.src && e.src.search( regex ) >= 0 ){
+				help_config = e;
+			}
 		});
 		if( !help_config ){
 			console.error( 'helpbutton.js not found in config dependencies. Did you rename this file?' );
@@ -110,10 +114,22 @@ var HelpButton = ( function( Reveal ){
 		}
 	}
 
-	install();
-
-	return {
+	var Plugin = {
 		configure: configure
-	};
+	}
+
+	if( Reveal && Reveal.VERSION && Reveal.VERSION.length && Reveal.VERSION[ 0 ] == '3' ){
+		// reveal 3.x
+		install();
+	}else{
+		// must be reveal 4.x
+		Plugin.id = 'help-button';
+		Plugin.init = function( _Reveal ){
+			Reveal = _Reveal;
+			install();
+		};
+	}
+
+	return Plugin;
 
 })( Reveal );
