@@ -1,6 +1,6 @@
 # HelpButton
 
-A [reveal.js](https://github.com/hakimel/reveal.js/) plugin to open the help screen by pressing a button.
+A [reveal.js](https://github.com/hakimel/reveal.js/) 3.x / 4.x plugin to open the help screen by pressing a button.
 
 <img style="border: 1px solid gray;" src="screenshot-button.png" width="55%">
 
@@ -10,9 +10,25 @@ Works with all official themes.
 
 ## Installation
 
-Copy this repository into the plugins folder of your reveal.js presentation, ie ```plugin/helpbutton```.
+Copy this repository into the plugin folder of your reveal.js presentation, ie ```plugin/helpbutton```.
 
-Add the plugin to the dependencies in your presentation, as below.
+Add the plugin to the initialization of your presentation, as below.
+
+### reveal 4.x
+
+```javascript
+<script src="plugin/helpbutton/helpbutton.js"></script>
+// .. 
+Reveal.initialize({
+	// ...
+	plugins: [
+		// ..
+		HelpButton,
+	]
+});
+```
+
+### reveal 3.x
 
 ```javascript
 Reveal.initialize({
